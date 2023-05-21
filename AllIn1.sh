@@ -266,7 +266,6 @@ while true; do
             
         #FIX DNS & GOOGLE RECAPCHA 
         7)
-        Fix_dns() {
             echo 
             echo "$(tput setaf 3)----- Optimizing System DNS Settings.$(tput sgr0)"
             echo 
@@ -282,7 +281,7 @@ while true; do
             echo 
             echo "$(tput setaf 2)----- System DNS Optimized.$(tput sgr0)"
             echo
-            sleep 1
+            sleep 3
           }
 
             echo -e "${GREEN}Fixing Google Recapcha...${NC}"
