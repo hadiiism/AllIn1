@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Declare Paths
+SYS_PATH="/etc/sysctl.conf"
+LIM_PATH="/etc/security/limits.conf"
+PROF_PATH="/etc/profile"
+SSH_PATH="/etc/ssh/sshd_config"
+DNS_PATH="/etc/resolv.conf"
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -34,7 +41,7 @@ while true; do
     echo -e "${BLUE}|                    ${GREEN}Main Menu${BLUE}                     |${NC}"
     echo -e "${GREEN}|     ---------------------------------------      |${NC}"
     echo -e "${BLUE}|${YELLOW} 1.${NC} ${CYAN}Update & Upgrade Server${NC}                       ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW} 2.${NC} ${GRAY}Install Dependences${NC}                           ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 2.${NC} ${GRAY}Install Useful Packages${NC}                       ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW} 3.${NC} ${GRAY}Install X-UI Panel${NC}                            ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW} 4.${NC} ${CYAN}Install and Config SSL${NC}                        ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW} 5.${NC} ${CYAN}Cisco AnyConnect${NC}                              ${BLUE}|${NC}"
@@ -67,10 +74,19 @@ while true; do
     
         #UPDATE SEVER 
         1)
-            echo -e "${GREEN}Updating server...${NC}" 
+            echo -e "${GREEN}Updating Server...${NC}" 
             echo ""
-            apt update && apt upgrade -y
+            sleep 1
+            
+            sudo apt update
+            sudo apt -y upgrade
+            sleep 0.5
+            sudo apt -y dist-upgrade
+            sudo apt -y autoremove
+            sudo apt -y autoclean
+            sudo apt -y clean
             echo ""
+            echo "$(tput setaf 2)----- System Updated Successfully.$(tput sgr0)"
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
@@ -81,6 +97,7 @@ while true; do
             echo ""
             sudo apt install git wget curl socat ufw unzip
             echo ""
+            echo "$(tput setaf 2)----- Useful Packages Installed Succesfully.$(tput sgr0)"
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
@@ -234,6 +251,8 @@ while true; do
             read -p "Enter a new port number: " new_port
             sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
             sed -i "s/#Port/Port/" /etc/ssh/sshd_config
+            sed -ri 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+            sed -ri 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
             systemctl restart sshd.service
             ufw allow $new_port/tcp
             echo ""
@@ -241,8 +260,27 @@ while true; do
             read -s -n 1
             ;;
             
-        #GOOGLE RECAPCHA FIX
-        7)  
+        #FIX DNS & GOOGLE RECAPCHA 
+        7)
+        Fix_dns() {
+            echo 
+            echo "$(tput setaf 3)----- Optimizing System DNS Settings.$(tput sgr0)"
+            echo 
+            sleep 1
+
+            sed -i '/nameserver/d' $DNS_PATH
+
+            echo 'nameserver 1.1.1.1' >> $DNS_PATH
+            echo 'nameserver 1.0.0.1' >> $DNS_PATH
+            echo 'nameserver 8.8.8.8' >> $DNS_PATH
+            echo 'nameserver 8.8.4.4' >> $DNS_PATH
+  
+            echo 
+            echo "$(tput setaf 2)----- System DNS Optimized.$(tput sgr0)"
+            echo
+            sleep 1
+          }
+
             echo -e "${GREEN}Fixing Google Recapcha...${NC}"
             echo ""
             curl -O https://raw.githubusercontent.com/jinwyp/one_click_script/master/install_kernel.sh && chmod +x ./install_kernel.sh && ./install_kernel.sh
