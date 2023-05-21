@@ -105,7 +105,8 @@ while true; do
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
-                        
+				
+				
         #INSTALL X-UI PANEL
         3)
             echo "Please choose a panel to install:"
@@ -653,7 +654,7 @@ while true; do
             echo ""
             echo "1. Install iptables"
             echo "2. Display forwarding table"
-            echo "3. Set up a tunnel"
+            echo "3. Setup a tunnel"
             echo "4. Delete  a tunnel"
             echo "5. Back to main menu"
             # read user input
