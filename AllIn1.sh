@@ -7,6 +7,7 @@ PROF_PATH="/etc/profile"
 SSH_PATH="/etc/ssh/sshd_config"
 DNS_PATH="/etc/resolv.conf"
 
+# Color
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -63,7 +64,7 @@ while true; do
     echo -e "${BLUE}|${YELLOW}19.${NC} View System Usage${NC}                             ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}20.${NC} Setup IPsec VPN (L2TP/IKEV2)${NC}                  ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}21.${NC} Reality Protocol${NC}                              ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}22.${NC} ${RED}QUIT${NC}                                         ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}22.${NC} ${RED}QUIT${NC}                                          ${BLUE}|${NC}"
     echo -e "${GREEN}|                                                  |${NC}" 
     echo -e "${YELLOW}|                                                  |${NC}" 
     echo -e "${YELLOW}+--------------------------------------------------+${NC}"
@@ -294,24 +295,15 @@ while true; do
          
         #Install Mtproto  
         8)
-            # Prompt user for input
-            echo "Please enter the following information:"
-            read -p "Port number (default is 443): " port
-            echo "for secret you you can use http://seriyps.ru/mtpgen.html "
-            read -p "Secret key (should be a string of 32 hexadecimal characters): " secret_key
-            echo "to get the server tag you should use telegram bot https://t.me/MTProxybot "
-            read -p "Server tag (should be a string of 32 hexadecimal characters): " server_tag
-            read -p "List of authentication methods - place empty for default - (should be a comma-separated list): " auth_methods
-            read -p "MTProto domain (should be a valid domain name): " mtproto_domain
-
-            # Set default values if user input is empty
-            port=${port:-443}
-            auth_methods=${auth_methods:-"dd,tls"}
-
-            # Download and run MTProto installation script
-            curl -L -o mtp_install.sh https://git.io/fj5ru && \
-            bash mtp_install.sh -p $port -s $secret_key -t $server_tag -a $auth_methods -d $mtproto_domain
+           # Download and run MTProto installation script
+            curl -L -o mtp_install.sh https://git.io/fj5ru && bash mtp_install.sh
             
+           #Auto play
+            systemctl enable mtproto-proxy
+            
+           # START
+            systemctl start mtproto-proxy
+
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
