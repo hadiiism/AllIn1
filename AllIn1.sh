@@ -33,29 +33,28 @@ while true; do
     echo -e "${BLUE}|            ---------------------------           |${NC}"
     echo -e "${BLUE}|                    ${GREEN}Main Menu${BLUE}                     |${NC}"
     echo -e "${GREEN}|     ---------------------------------------      |${NC}"
-    echo -e "${BLUE}|${YELLOW} 1.${NC} ${CYAN}Update server and install dependences ${NC}        ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW} 2.${NC} ${GRAY}Install curl/socat${NC}                            ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW} 3.${NC} ${GRAY}Install panel${NC}                                 ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW} 4.${NC} ${CYAN}Install and config SSL ${NC}                       ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 1.${NC} ${CYAN}Update & Upgrade Server{NC}                        ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 2.${NC} ${GRAY}Install Dependences${NC}                           ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 3.${NC} ${GRAY}Install X-UI Panel${NC}                            ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 4.${NC} ${CYAN}Install and Config SSL${NC}                        ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW} 5.${NC} ${CYAN}Cisco AnyConnect${NC}                              ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW} 6.${NC} ${GRAY}Change SSH port${NC}                               ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 6.${NC} ${GRAY}Change SSH Port${NC}                               ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW} 7.${NC} ${GRAY}Google Recapcha Fix${NC}                           ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW} 8.${NC} ${CYAN}Install Mtproto proxy${NC}                         ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW} 9.${NC} ${CYAN}Add user (for SSH)${NC}                            ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 8.${NC} ${CYAN}Install Mtproto Proxy${NC}                         ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW} 9.${NC} ${CYAN}Add User (for SSH)${NC}                            ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}10.${NC} ${GRAY}Install OpenVPN${NC}                               ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}11.${NC} ${GRAY}Install and config WordPress${NC}                  ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}11.${NC} ${GRAY}Install and Config WordPress${NC}                  ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}12.${NC} ${CYAN}Speedtest${NC}                                     ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}13.${NC} ${CYAN}Tunnel two server using IPtables${NC}              ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}14.${NC} ${GRAY}Cloudflare white IP scanner${NC}                   ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}15.${NC} ${GRAY}Reverse proxy(UNDER development)${NC}              ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}16.${NC} ${CYAN}Set up wiregaurd${NC}                              ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}17.${NC} ${CYAN}Set up Outline${NC}                                ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}15.${NC} ${GRAY}Reverse Proxy(UNDER development)${NC}              ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}16.${NC} ${CYAN}Setup WireGaurd${NC}                               ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}17.${NC} ${CYAN}Setup Outline${NC}                                 ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}18.${NC} ${GRAY}Server Backup${NC}                                 ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}19.${NC} ${GRAY}View system usage${NC}                             ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}20.${NC} ${CYAN}Set up IPsec VPN (L2TP/IKEV2)${NC}                 ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}19.${NC} ${GRAY}View System Usage${NC}                             ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}20.${NC} ${CYAN}Setup IPsec VPN (L2TP/IKEV2)${NC}                  ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}21.${NC} ${CYAN}Reality Protocol${NC}                              ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}22.${NC} ${GREEN}CREDITS${NC}                                       ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}23.${NC} ${RED}QUIT${NC}                                          ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}22.${NC} ${RED}QUIT${NC}                                           ${BLUE}|${NC}"
     echo -e "${GREEN}|                                                  |${NC}" 
     echo -e "${YELLOW}|                                                  |${NC}" 
     echo -e "${YELLOW}+--------------------------------------------------+${NC}"
@@ -71,33 +70,34 @@ while true; do
             echo -e "${GREEN}Updating server...${NC}" 
             echo ""
             apt update && apt upgrade -y
-            sudo apt install git wget curl ufw  
             echo ""
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
+            
+        #
         2)
-            echo -e "${GREEN}Installing curl/socat...${NC}"
+            echo -e "${GREEN}Installing Dependences...${NC}"
             echo ""
-            apt install curl socat -y
+            sudo apt install git wget curl socat ufw unzip
             echo ""
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
                         
-        # INSTALL X-UI PANEL
+        #INSTALL X-UI PANEL
         3)
-    
             echo "Please choose a panel to install:"
-            echo -e "${YELLOW}1.${NC} ${GRAY}hossein assadi's x-ui${NC}"
-            echo -e "${YELLOW}2.${NC} ${GREEN}vaxilu (original)${NC}"
-            echo -e "${YELLOW}3.${NC} ${GRAY}hiddify${NC}"
-            echo -e "${YELLOW}4.${NC} ${GRAY}alireza0 x-ui${NC}"
-            echo -e "${YELLOW}5.${NC} ${GRAY}3x-ui (MHSanaei)${NC}"
-            echo -e "${YELLOW}6.${NC} ${GRAY}kafka x-ui${NC}"
-            echo -e "${YELLOW}7.${NC} ${GRAY}Marzban${NC}"
-            echo -e "${YELLOW}8.${NC} ${RED}Back to Main Menu${NC}"
-            echo -e""
+            echo -e "${YELLOW}1.${NC} ${GREEN}vaxilu (original)${NC}"
+            echo -e "${YELLOW}2.${NC} ${GRAY}FranzKafkaYu${NC}"
+            echo -e "${YELLOW}3.${NC} ${GRAY}HosseinAssadi's x-ui${NC}"
+            echo -e "${YELLOW}4.${NC} ${GRAY}MHSanaei 3x-ui${NC}"
+            echo -e "${YELLOW}5.${NC} ${GRAY}Alireza0 x-ui${NC}"
+            echo -e "${YELLOW}6.${NC} ${GRAY}MrCenTury xXx-UI${NC}"
+            echo -e "${YELLOW}7.${NC} ${GRAY}Hiddify${NC}"
+            echo -e "${YELLOW}8.${NC} ${GRAY}Marzban${NC}"
+            echo -e "${YELLOW}9.${NC} ${RED}Back to Main Menu${NC}"
+            echo -e ""
 
             read -p "Enter option number: " panel_choice
 
@@ -105,37 +105,39 @@ while true; do
               1)
                   echo -e "${GREEN}Installing panel...${NC}"
                   echo ""
-                  bash <(curl -Ls https://raw.githubusercontent.com/hossinasaadi/x-ui/master/install.sh)
+                  bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
                   ;;
               2)  
                   echo -e "${GREEN}Installing panel...${NC}"
                   echo ""
-                  bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+                  bash <(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
                   ;;
-                
               3) 
                   echo -e "${GREEN}Installing panel...${NC}"
                   echo ""
-                  bash -c "$(curl -Lfo- https://raw.githubusercontent.com/hiddify/hiddify-config/main/common/download_install.sh)"
+                  bash <(curl -Ls https://raw.githubusercontent.com/hossinasaadi/x-ui/master/install.sh)
                   ;;
-            
               4)
                   echo -e "${GREEN}Installing panel...${NC}"
                   echo ""  
-                  bash <(curl -Ls https://raw.githubusercontent.com/alireza0/x-ui/master/install.sh)
+                  bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
                   ;;
               5)
                   echo -e "${GREEN}Installing panel...${NC}"
                   echo "" 
-                  bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+                  bash <(curl -Ls https://raw.githubusercontent.com/alireza0/x-ui/master/install.sh)
                   ;;
               6)
                   echo -e "${GREEN}Installing panel...${NC}"
                   echo "" 
-                  bash <(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
+                  bash <(curl -Ls https://raw.githubusercontent.com/MrCenTury/xXx-UI/master/install.sh)
                   ;;
               7)
-                  
+                  echo -e "${GREEN}Installing panel...${NC}"
+                  echo "" 
+                  bash -c "$(curl -Lfo- https://raw.githubusercontent.com/hiddify/hiddify-config/main/common/download_install.sh)"
+                  ;;
+              8)
                   echo -e "${GREEN}Installing docker and downloading panel...${NC}"
                   # Download and install Docker
                   curl -fsSL https://get.docker.com | sh
@@ -151,8 +153,7 @@ while true; do
                   docker-compose down
                   docker-compose up -d
                   ;;
-              8)
-                  
+              9)
                   break
                   ;;
               *)
@@ -162,8 +163,9 @@ while true; do
 
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
-            ;;  
-        # DOWNLOADS ACME
+            ;;
+            
+        #DOWNLOADS ACME
         4)
             echo -e "${GREEN}Installing Acme Script...${NC}"
             echo ""
@@ -188,7 +190,7 @@ while true; do
             read -s -n 1
             ;;
             
-        #  cisco open connect (oscerv)
+        #cisco open connect (oscerv)
         5)
             echo -e "${YELLOW}1.${NC} ${GRAY}Install ocserv${NC}"
             echo -e "${YELLOW}2.${NC} ${GRAY}Run ocserv${NC}"
@@ -239,7 +241,7 @@ while true; do
             read -s -n 1
             ;;
             
-        # GOOGLE RECAPCHA FIX
+        #GOOGLE RECAPCHA FIX
         7)  
             echo -e "${GREEN}Fixing Google Recapcha...${NC}"
             echo ""
@@ -249,7 +251,7 @@ while true; do
             read -s -n 1
             ;;
          
-        # install Mtproto  
+        #Install Mtproto  
         8)
             # Prompt user for input
             echo "Please enter the following information:"
@@ -273,7 +275,7 @@ while true; do
             read -s -n 1
             ;;
             
-        # Make  user for ssh connection
+        #Make user for ssh connection
         9)
             echo -e "${GREEN}Adding user...${NC}"
             echo ""
@@ -284,7 +286,7 @@ while true; do
             read -s -n 1
             ;;
             
-        # Install OPENVPN
+        #Install OPENVPN
         10)
             echo -e "${GREEN}Installing OpenVPN...${NC}"
             echo ""
@@ -296,9 +298,8 @@ while true; do
             read -s -n 1
             ;;
         
-        # Install WordPress and connect to SQL
+        #Install WordPress and connect to SQL
         11)
-            
             echo -e "${GREEN}Installing WordPress and connecting to SQL...${NC}"
             echo ""
             # Update package index and install required packages
@@ -312,8 +313,6 @@ while true; do
           
             curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www
         
-        
-
             # Define the file path and content
             FILE_PATH="/etc/apache2/sites-available/wordpress.conf"
             FILE_CONTENT="<VirtualHost *:80>\n\tDocumentRoot /srv/www/wordpress\n\t<Directory /srv/www/wordpress>\n\t\tOptions FollowSymLinks\n\t\tAllowOverride Limit Options FileInfo\n\t\tDirectoryIndex index.php\n\t\tRequire all granted\n\t</Directory>\n\t<Directory /srv/www/wordpress/wp-content>\n\t\tOptions FollowSymLinks\n\t\tRequire all granted\n\t</Directory>\n</VirtualHost>"
@@ -330,11 +329,8 @@ while true; do
           
             sudo a2dissite 000-default
           
-          
             # Restart Apache
             sudo systemctl restart apache2
-
-         
 
             # Prompt the user for their MySQL root password
             echo ""
@@ -351,8 +347,6 @@ while true; do
             echo "quit" | sudo mysql -u root -p$mysql_password
 
             sudo -u www-data cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
-
-
 
             # Define the database settings
             DB_NAME=wordpress
@@ -450,9 +444,6 @@ while true; do
             
             /* Add any custom values between this line and the "stop editing" line. */
             
-            
-            
-            
             /* That's all, stop editing! Happy publishing. */
             
             /** Absolute path to the WordPress directory. */
@@ -464,7 +455,6 @@ while true; do
             require_once ABSPATH . 'wp-settings.php';
             " > "$FILE_PATH"
 
-
             echo "New values have been added to the wp-config.php file."
             sleep 1.33
             echo "WordPress has been installed and configured!"
@@ -473,20 +463,18 @@ while true; do
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
-
-       
             
         #Saaspeedtest menu  
-        12) 
-        
+        12)
               while true; do
                   echo ""
                   echo "===================="
-                  echo "VPS Speed Test Menu"
+                  echo "Speed Test Menu Options"
                   echo "===================="
+                  echo ""
                   echo "1. Install speedtest-cli"
-                  echo "2. complete test"
-                  echo "3. complete test"
+                  echo "2. Complete Test"
+                  echo "3. Complete Test"
                   echo "4. Test Download Speed"
                   echo "5. Test Upload Speed"
                   echo "6. Choose Server and Test"
@@ -585,8 +573,6 @@ while true; do
                           read -s -n 1
                           ;;
                       6)
-                          
-
                           # Install speedtest-cli if not already installed
                           if ! command -v speedtest-cli &> /dev/null
                           then
@@ -628,13 +614,16 @@ while true; do
         #Iptables
         13)
            while true; do 
-            # show options to user
-            echo "Please choose an option:"
+            echo ""
+            echo "===================="
+            echo "Iptables Menu Options"
+            echo "===================="
+            echo ""
             echo "1. Install iptables"
             echo "2. Display forwarding table"
             echo "3. Set up a tunnel"
-            echo "4. delete  a tunnel"
-            echo "5. back to main menu"
+            echo "4. Delete  a tunnel"
+            echo "5. Back to main menu"
             # read user input
             read choice
             
@@ -647,7 +636,7 @@ while true; do
                     read -s -n 1
                     ;;
                 2)
-                    
+                    sudo iptables -L -v
                     ;;
                 3)
                     echo "Please enter the Iran IP for the tunnel:"
@@ -675,9 +664,7 @@ while true; do
                     echo -e "Press ${RED}ENTER${NC} to continue"
                     read -s -n 1
                     ;;
-                    
                 5)
-                
                     break
                     ;;    
                 *)
@@ -686,18 +673,20 @@ while true; do
             esac
           done
           ;;
+          
+        
         #CFSscanner
         14)
-           
-           
              while true; do
-                 echo "---------------------"
+                 echo ""
+                 echo "===================="
                  echo "CFSanner Menu Options:"
-                 echo "---------------------"
+                 echo "===================="
+                 echo ""
                  echo "1. Install Dependencies"
                  echo "2. Set Config File"
                  echo "3. Scan"
-                 echo "4. Exit"
+                 echo "4. Back to main menu"
              
                  read -p "Please select an option [1-4]: " choice
              
@@ -786,7 +775,6 @@ while true; do
                          ;;
                      3)
                          echo "Scanning..."
-                         
 
                          # Default values
                          vpn="NO"
@@ -850,33 +838,25 @@ while true; do
 
            ;;
            
-           
         #reverse proxy    
-        15)  
-           
+        15)
            apt install nginx certbot python3-certbot-nginx -y
-            
-           
            
            read -p "Enter your site name: " site_name
            ln -s /etc/nginx/sites-available/$site_name /etc/nginx/sites-enabled/
            cp /etc/nginx/sites-available/default /etc/nginx/sites-available/YOURSITE.COM
            # Define the file path
             FILE_PATH="/etc/nginx/sites-available/$site_name"
-           
 
             # Read user input
             
             # Set file path
-            
             
             # Define content
             CONTENT="#\n# You should look at the following URL's in order to grasp a solid understanding\n# of Nginx configuration files in order to fully unleash the power of Nginx.\n# https://www.nginx.com/resources/wiki/start/\n# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/\n# https://wiki.debian.org/Nginx/DirectoryStructure\n#\n# In most cases, administrators will remove this file from sites-enabled/ and\n# leave it as reference inside of sites-available where it will continue to be\n# updated by the nginx packaging team.\n#\n# This file will automatically load configuration files provided by other\n# applications, such as Drupal or Wordpress. These applications will be made\n# available underneath a path with that package name, such as /drupal8.\n#\n# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.\n##\n\n# Default server configuration\n#\nserver {\n        listen 80;\n        listen [::]:80;\n\n        # SSL configuration\n        #\n        # listen 443 ssl default_server;\n        # listen [::]:443 ssl default_server;\n        #\n        # Note: You should disable gzip for SSL traffic.\n        # See: https://bugs.debian.org/773332\n        #\n        # Read up on ssl_ciphers to ensure a secure configuration.\n        # See: https://bugs.debian.org/765782\n        #\n        # Self signed certs generated by the ssl-cert package\n        # Don't use them in a production server!\n        #\n        # include snippets/snakeoil.conf;\n\n        root /var/www/html;\n\n        # Add index.php to the list if you are using PHP\n        index index.html index.htm index.nginx-debian.html;\n\n        server_name $site_name;\n\n        location / {\n                # First attempt to serve request as file, then\n                # as directory, then fall back to displaying a 404.\n                try_files \$uri \$uri/ =404;\n        }\n\n    location /ports {\n        if (\$http_upgrade != \"websocket\") {\n            return 404;\n        }\n        location ~ /ports/\d\d\d\d\d\$ {\n            if (\$request_uri ~* \"([^/]*$)\" ) {\n                set \$port \$1;\n            }\n            proxy_redirect off;\n            proxy_pass http://127.0.0.1:\$port/;\n            proxy_http_version 1.1;\n            proxy_set_header Upgrade \$http_upgrade;\n            proxy_set_header Connection \"upgrade\";\n            proxy_set_header Host \$host;\n            proxy_set_header X-Real-IP \$remote_addr;\n            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;\n        }\n        return 404;\n    }\n        # pass PHP scripts to FastCGI server\n        #\n        #location ~ \.php$ {\n        #       include snippets/fastcgi-php.conf;\n        #\n        #       # With php-fpm (or other unix sockets):\n        #       fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;\n        #       # With php-cgi (or other tcp sockets):\n        #       fastcgi_pass 127.0.0.1:9000;\n        #}\n"
             
             # Write content to destination file
             echo -e "$CONTENT" > "$FILE_PATH"
-
-           
             
             ln -s /etc/nginx/sites-available/$site_name /etc/nginx/sites-enabled/
             
@@ -888,21 +868,19 @@ while true; do
 
             ;;
             
-            
-            
         #Wiregaurd    
         16)
-            
-            
-            while true
-            do
-                clear
-                echo "==== Main Menu ===="
-                echo "1. Install WireGuard"
-                echo "2. Update WireGuard"
-                echo "3. Backup Users"
-                echo "4. Exit"
-                read -p "Enter your choice [1-4]: " choice
+            while true; do
+                 echo ""
+                 echo "===================="
+                 echo "WireGaurd Menu Options:"
+                 echo "===================="
+                 echo ""
+                 echo "1. Install WireGuard"
+                 echo "2. Update WireGuard"
+                 echo "3. Backup Users"
+                 echo "4. Back to main menu"
+                 read -p "Enter your choice [1-4]: " choice
             
                 case $choice in
                     1)
@@ -929,11 +907,6 @@ while true; do
                                         sudo usermod -aG docker $(whoami)
                                     fi
                           
-                                    
-                                    
-                                    
-                                    
-
                                     # Prompt user for required information
                                     read -p "Enter IP address or domain name of server running Wireguard: " WG_HOST
                                     read -p "Enter admin password for Vase login: " PASSWORD
@@ -1112,18 +1085,16 @@ while true; do
 
            ;;
            
-           
-           
         #outline  
         17)
-            echo " installnig the outline .... "
+            echo " Installnig the Outline ... "
             bash -c "$(wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh)"
-            echo " copy your installation output from above and paste in outline manager."
+            echo "copy your installation output from above and paste in outline manager."
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
            ;;
            
-           
+        #Server Backup
         18)
                while true; do
                clear
@@ -1131,7 +1102,7 @@ while true; do
                echo "1. Install rsnapshot"
                echo "2. Configure rsnapshot"
                echo "3. Take snapshot"
-               echo "4. Exit"
+               echo "4. Back to main menu"
                read -p "Enter your choice: " choice
            
                case $choice in
@@ -1178,7 +1149,9 @@ while true; do
                esac
            done
            ;;
-          
+           
+           
+        #View system usage   
         19)
             # Function to wait for user input and return to menu
             function return_to_menu {
@@ -1191,7 +1164,7 @@ while true; do
                 clear
                 echo "Please select an option:"
                 echo "1. View process table"
-                echo "2. Quit"
+                echo "2. Back to main menu"
                 read -n1 -r option
             
                 case $option in
@@ -1232,6 +1205,8 @@ while true; do
                 esac
             done
            ;;
+           
+           
         #IPsec
         20)
            # Prompt the user if they want to fill in the parameters
@@ -1258,6 +1233,8 @@ while true; do
            sudo sh vpn.sh
 
            ;;
+           
+        #Reality Protocol 
         21)
         
            # Define a function to display the menu
@@ -1267,7 +1244,7 @@ while true; do
                echo "1. Normal Install"
                #echo "2. Install with Docker"
                echo "2. Uninstall (normal install only)"
-               echo "3. Quit"
+               echo "3. Back to main menu"
                echo
            }
            
@@ -1312,30 +1289,13 @@ while true; do
            done
 
            ;;
-        # CREDITS   
+           
+        
+        #EXIT
         22)
             echo ""
-            echo -e "${BLUE}####################################################${NC}"
-            echo -e "${BLUE}#${NC}                                      ${BLUE}#${NC}"
-            echo -e "${BLUE}#${NC}           ${YELLOW}Credits${NC}      ${BLUE}#${NC}"
-            echo -e "${BLUE}#${NC}                                      ${BLUE}#${NC}"
-            echo -e "${BLUE}####################################################${NC}"
-            echo ""
-
-            # Print contributors
-            echo -e "This bash was created by  ${GREEN}Hadiiism${NC}\n"
-            echo -e "Special thanks to ${GREEN}AtomicBoys Team${NC}, ${GREEN}alex${NC}, and ${GREEN}kimi${NC} for their contributions.\n"
-            echo -e "this script only has been made to  make youre job faster. so use it appropriately.i used lot of people codes scripts and .... that takes hole day to name. you can find them in github ^_^"
-            # Wait for user input
-            echo -e "Press ${RED}ENTER${NC} to continue"
-            read -s -n 1
-            ;;
-        
-        # EXIT
-        23)
-            echo ""
             echo -e "${GREEN}Exiting...${NC}"
-            echo "Exiting program"
+            echo "Exiting Program"
             exit 0
             ;;
          *)
