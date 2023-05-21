@@ -36,7 +36,7 @@ while true; do
     echo -e "${YELLOW}|                                                  |${NC}"
     echo -e "${BLUE}|${GREEN}           ▒▄▀▄░█▒░░█▒░░░░█░█▄░█░░░▄█             ${BLUE}|${NC}"
     echo -e "${BLUE}|${GREEN}           ░█▀█▒█▄▄▒█▄▄▒░░█░█▒▀█▒░░░█.            ${BLUE}|${NC}"
-    echo -e "${BLUE}|                                     ver 1.0        ${BLUE}|${NC}"
+    echo -e "${BLUE}|                                     ver 1.0     ${BLUE}|${NC}"
     echo -e "${BLUE}|${NC}                        B Y                       ${BLUE}|${NC}"
     echo -e "${BLUE}|${NC}                 H A D I I I S M                  ${BLUE}|${NC}"
     echo -e "${BLUE}|            ---------------------------           |${NC}"
@@ -63,7 +63,7 @@ while true; do
     echo -e "${BLUE}|${YELLOW}19.${NC} View System Usage${NC}                             ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}20.${NC} Setup IPsec VPN (L2TP/IKEV2)${NC}                  ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}21.${NC} Reality Protocol${NC}                              ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}22.${NC} ${RED}QUIT${NC}                                    ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}22.${NC} ${RED}QUIT${NC}                                        ${BLUE}|${NC}"
     echo -e "${GREEN}|                                                  |${NC}" 
     echo -e "${YELLOW}|                                                  |${NC}" 
     echo -e "${YELLOW}+--------------------------------------------------+${NC}"
@@ -249,12 +249,12 @@ while true; do
         #CHANGE SSH PORT
         6)
             echo -e "${GREEN}Changing SSH port...${NC}"
+            sed -ri 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+            sed -ri 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
             echo ""
             read -p "Enter a new port number: " new_port
             sed -i "s/#Port 22/Port $new_port/" /etc/ssh/sshd_config
             sed -i "s/#Port/Port/" /etc/ssh/sshd_config
-            sed -ri 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-            sed -ri 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
             systemctl restart sshd.service
             ufw allow $new_port/tcp
             echo ""
