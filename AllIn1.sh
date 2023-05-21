@@ -25,9 +25,9 @@ while true; do
     clear
     echo -e "${YELLOW}+--------------------------------------------------+${NC}"
     echo -e "${YELLOW}|                                                  |${NC}"
-    echo -e "${BLUE}|${GREEN}           ▒▄▀▄░█▒░░█▒░░░░█░█▄░█░░░▄█             ${BLUE}|${NC}"
-    echo -e "${BLUE}|${GREEN}           ░█▀█▒█▄▄▒█▄▄▒░░█░█▒▀█▒░░░█             ${BLUE}|${NC}"
-    echo -e "${BLUE}|                                       ver 1.0    |${NC}"
+    echo -e "${BLUE}|${GREEN}           ▒▄▀▄░█▒░░█▒░░░░█░█▄░█░░░▄█               ${BLUE}|${NC}"
+    echo -e "${BLUE}|${GREEN}           ░█▀█▒█▄▄▒█▄▄▒░░█░█▒▀█▒░░░█               ${BLUE}|${NC}"
+    echo -e "${BLUE}|                                     ver 1.0    |${NC}"
     echo -e "${BLUE}|${NC}                        B Y                       ${BLUE}|${NC}"
     echo -e "${BLUE}|${NC}                 H A D I I I S M                  ${BLUE}|${NC}"
     echo -e "${BLUE}|            ---------------------------           |${NC}"
