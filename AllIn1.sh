@@ -17,7 +17,7 @@ GRAY='\033[0;37m'
 NC='\033[0m' # No Color
 
 
- Check if user is root
+Check if user is root
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root"
    sleep .5 
@@ -63,7 +63,7 @@ while true; do
     echo -e "${BLUE}|${YELLOW}19.${NC} View System Usage${NC}                             ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}20.${NC} Setup IPsec VPN (L2TP/IKEV2)${NC}                  ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW}21.${NC} Reality Protocol${NC}                              ${BLUE}|${NC}"
-    echo -e "${BLUE}|${YELLOW}22.${NC} ${RED}QUIT${NC}                                           ${BLUE}|${NC}"
+    echo -e "${BLUE}|${YELLOW}22.${NC} ${RED}QUIT${NC}                                         ${BLUE}|${NC}"
     echo -e "${GREEN}|                                                  |${NC}" 
     echo -e "${YELLOW}|                                                  |${NC}" 
     echo -e "${YELLOW}+--------------------------------------------------+${NC}"
@@ -93,7 +93,7 @@ while true; do
             read -s -n 1
             ;;
             
-        #
+        #Useful Packages
         2)
             echo -e "${GREEN}Installing Dependences...${NC}"
             echo ""
