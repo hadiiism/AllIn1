@@ -270,8 +270,8 @@ while true; do
             echo "$(tput setaf 3)----- Optimizing System DNS Settings.$(tput sgr0)"
             echo 
             sleep 1
-
-            sed -i '/nameserver/d' $DNS_PATH
+            
+            sed -i '/nameserver/d' /etc/resolv.conf
 
             echo 'nameserver 1.1.1.1' >> /etc/resolv.conf
             echo 'nameserver 1.0.0.1' >> /etc/resolv.conf
