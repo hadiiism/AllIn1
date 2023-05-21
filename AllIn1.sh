@@ -41,7 +41,7 @@ while true; do
     echo -e "${BLUE}|${NC}                        B Y                       ${BLUE}|${NC}"
     echo -e "${BLUE}|${NC}                 H A D I I I S M                  ${BLUE}|${NC}"
     echo -e "${BLUE}|            ---------------------------           |${NC}"
-    echo -e "${BLUE}|                    ${MAGENTA}Main Menu${BLUE}                     |${NC}"
+    echo -e "${BLUE}|                    ${YELLOW}Main Menu${BLUE}                     |${NC}"
     echo -e "${GREEN}|     ---------------------------------------      |${NC}"
     echo -e "${BLUE}|${YELLOW} 1.${NC} Update & Upgrade Server${NC}                       ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW} 2.${NC} Install Useful Packages${NC}                       ${BLUE}|${NC}"
