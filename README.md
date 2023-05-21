@@ -13,7 +13,7 @@
 
 
 #
-[اگر فارسی زبان هستید](https://github.com/hadiiism/Astro/blob/main/readme-fa.md)
+[اگر فارسی زبان هستید](https://github.com/hadiiism/AllIn1/blob/main/readme-fa.md)
 
 #
  
