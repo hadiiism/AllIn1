@@ -40,7 +40,7 @@ while true; do
     echo -e "${BLUE}|${NC}                        B Y                       ${BLUE}|${NC}"
     echo -e "${BLUE}|${NC}                 H A D I I I S M                  ${BLUE}|${NC}"
     echo -e "${BLUE}|            ---------------------------           |${NC}"
-    echo -e "${BLUE}|                    ${GREEN}Main Menu${BLUE}                     |${NC}"
+    echo -e "${BLUE}|                    ${MAGENTA}Main Menu${BLUE}                     |${NC}"
     echo -e "${GREEN}|     ---------------------------------------      |${NC}"
     echo -e "${BLUE}|${YELLOW} 1.${NC} Update & Upgrade Server${NC}                       ${BLUE}|${NC}"
     echo -e "${BLUE}|${YELLOW} 2.${NC} Install Useful Packages${NC}                       ${BLUE}|${NC}"
@@ -95,11 +95,12 @@ while true; do
             
         #Useful Packages
         2)
-            echo -e "${GREEN}Installing Dependences...${NC}"
+            echo -e "${GREEN}Installing Useful Packages...${NC}"
             echo ""
-            sudo apt install git wget curl socat ufw unzip
+            sudo apt-get install -y git wget curl socat ufw unzip nano cron net-tools
             echo ""
             echo "$(tput setaf 2)----- Useful Packages Installed Succesfully.$(tput sgr0)"
+            echo ""
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
             ;;
@@ -184,7 +185,7 @@ while true; do
             read -s -n 1
             ;;
             
-        #DOWNLOADS ACME
+        #Install and Config SSL
         4)
             echo -e "${GREEN}Installing Acme Script...${NC}"
             echo ""
